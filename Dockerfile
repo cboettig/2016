@@ -41,8 +41,6 @@ RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev l
     cboettig/gpmanagement \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
-  && install2.r --repo http://packages.ropensci.org --error \
-    rrdf \
   && rm -rf /tmp/downloaded_packages
 
 RUN wget http://www0.cs.ucl.ac.uk/staff/D.Silver/web/Applications_files/pomcp-1.0.tar.gz \
