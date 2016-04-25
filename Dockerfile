@@ -42,6 +42,7 @@ RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev l
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
     ropensci/appl \
+    hadley/multidplyr \
   && rm -rf /tmp/downloaded_packages
 
 #RUN apt-get update && apt-get -y install libboost-dev \
