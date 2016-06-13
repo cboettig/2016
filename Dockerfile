@@ -26,8 +26,6 @@ RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev l
      phytools \
      drat.builder \
      ropkgs \
-     EML \
-     RNeXML \
      rfishbase \
   && installGithub.r \
     cboettig/earlywarning \
@@ -43,6 +41,7 @@ RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev l
     cloudyr/aws.s3 \
     cboettig/appl \
     hadley/multidplyr \
+    ropensci/EML \
   && rm -rf /tmp/downloaded_packages
 
 #RUN apt-get update && apt-get -y install libboost-dev \
