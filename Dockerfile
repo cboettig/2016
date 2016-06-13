@@ -6,7 +6,6 @@ RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev l
   && install2.r --error \
      -r "http://www.bioconductor.org/packages/release/bioc" \
      -r "http://cran.rstudio.com" \
-     -r "packages.ropensci.org" \
      FKF \
      dlm \
      KFAS \
