@@ -28,8 +28,6 @@ RUN apt-get update && apt-get -y install -t unstable \
      RNeXML \
      geiger \
      phytools \
-     drat.builder \
-     ropkgs \
      rfishbase \
      seewave \
   && installGithub.r \
@@ -47,6 +45,8 @@ RUN apt-get update && apt-get -y install -t unstable \
     cboettig/appl \
     hadley/multidplyr \
     ropensci/EML \
+    richfitz/drat.builder \
+    ropensci/ropkgs \
   && rm -rf /tmp/downloaded_packages
 
 #RUN apt-get update && apt-get -y install libboost-dev \
