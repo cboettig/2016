@@ -2,7 +2,12 @@ FROM cboettig/labnotebook
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
 ## Install additional R package dependencies ###
-RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev libudunits2-dev \
+RUN apt-get update && apt-get -y install -t unstable \
+  r-cran-rjags \
+  librsvg2-dev \
+  libudunits2-dev \
+  libsndfile1-dev \
+  libfftw3-dev \
   && install2.r --error \
      -r "http://www.bioconductor.org/packages/release/bioc" \
      -r "http://cran.rstudio.com" \
@@ -26,6 +31,7 @@ RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev l
      drat.builder \
      ropkgs \
      rfishbase \
+     seewave \
   && installGithub.r \
     cboettig/earlywarning \
     cboettig/pdg_control \
