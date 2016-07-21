@@ -2,11 +2,15 @@ FROM cboettig/labnotebook
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
 ## Install additional R package dependencies ###
-RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev libudunits2-dev \
+RUN apt-get update && apt-get -y install -t unstable \
+  r-cran-rjags \
+  librsvg2-dev \
+  libudunits2-dev \
+  libsndfile1-dev \
+  libfftw3-dev \
   && install2.r --error \
      -r "http://www.bioconductor.org/packages/release/bioc" \
      -r "http://cran.rstudio.com" \
-     -r "packages.ropensci.org" \
      FKF \
      dlm \
      KFAS \
@@ -24,11 +28,8 @@ RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev l
      RNeXML \
      geiger \
      phytools \
-     drat.builder \
-     ropkgs \
-     EML \
-     RNeXML \
      rfishbase \
+     seewave \
   && installGithub.r \
     cboettig/earlywarning \
     cboettig/pdg_control \
@@ -41,8 +42,11 @@ RUN apt-get update && apt-get -y install -t unstable r-cran-rjags librsvg2-dev l
     cboettig/gpmanagement \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
-    ropensci/appl \
+    cboettig/appl \
     hadley/multidplyr \
+    ropensci/EML \
+    richfitz/drat.builder \
+    ropensci/ropkgs \
   && rm -rf /tmp/downloaded_packages
 
 #RUN apt-get update && apt-get -y install libboost-dev \
