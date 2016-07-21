@@ -31,6 +31,8 @@ RUN apt-get update && apt-get -y install -t unstable \
      rfishbase \
      seewave \
   && installGithub.r \
+    hadley/multidplyr \
+    cboettig/appl \
     cboettig/earlywarning \
     cboettig/pdg_control \
     cboettig/multiple_uncertainty \
@@ -38,14 +40,13 @@ RUN apt-get update && apt-get -y install -t unstable \
     cboettig/regimeshifts  \
     cboettig/nonparametric-bayes \
     cboettig/pmc \
-    nimble-dev/nimble/packages/nimble@stable \
     cboettig/gpmanagement \
+    nimble-dev/nimble/packages/nimble@stable \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
-    cboettig/appl \
-    hadley/multidplyr \
-    ropensci/EML \
     richfitz/drat.builder \
+    ropensci/ropkgs \
+    ropensci/EML \
     ropensci/ropkgs \
   && rm -rf /tmp/downloaded_packages
 
