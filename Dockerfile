@@ -30,7 +30,14 @@ RUN apt-get update && apt-get -y install -t unstable \
      phytools \
      rfishbase \
      seewave \
+     pmc \
   && installGithub.r \
+    nimble-dev/nimble/packages/nimble@stable \
+    cloudyr/aws.signature \
+    cloudyr/aws.s3 \
+    richfitz/drat.builder \
+    ropensci/EML \
+    ropensci/ropkgs \
     hadley/multidplyr \
     cboettig/appl \
     cboettig/earlywarning \
@@ -39,29 +46,6 @@ RUN apt-get update && apt-get -y install -t unstable \
     cboettig/knitcitations \
     cboettig/regimeshifts  \
     cboettig/nonparametric-bayes \
-    cboettig/pmc \
     cboettig/gpmanagement \
-    nimble-dev/nimble/packages/nimble@stable \
-    cloudyr/aws.signature \
-    cloudyr/aws.s3 \
-    richfitz/drat.builder \
-    ropensci/ropkgs \
-    ropensci/EML \
-    ropensci/ropkgs \
   && rm -rf /tmp/downloaded_packages
-
-#RUN apt-get update && apt-get -y install libboost-dev \
-#  && cd /opt/ && wget http://bigbird.comp.nus.edu.sg/pmwiki/farm/appl/uploads/Main/appl-0.96.tar.gz \
-#  && tar -xvf appl-0.96.tar.gz \
-#  && cd appl-0.96/src && make && rm /*.tar.gz 
-
-# ENV PATH /opt/appl-0.96/src:$PATH
-
-#RUN apt-get update && apt-get -y install libboost-all-dev wget build-essential \
-#  && wget http://www0.cs.ucl.ac.uk/staff/D.Silver/web/Applications_files/pomcp-1.0.tar.gz \
-#  && tar -xvf pomcp-1.0.tar.gz \
-#  && cd pomcp-1.0 && ./configure --with-boost-libdir=/usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH) \
-#  && make && make install \
-#  && rm /*.tar.gz 
-
 
