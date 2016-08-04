@@ -48,5 +48,6 @@ RUN apt-get update && apt-get -y install -t unstable \
     cboettig/regimeshifts  \
     cboettig/nonparametric-bayes \
     cboettig/gpmanagement \
+    yihui/printr \
   && rm -rf /tmp/downloaded_packages
 
