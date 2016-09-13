@@ -50,5 +50,6 @@ RUN apt-get update && apt-get -y install -t unstable \
     cboettig/nonparametric-bayes \
     cboettig/gpmanagement \
     yihui/printr \
+  && r -e 'source("https://install-github.me/MangoTheCat/goodpractice")' \
   && rm -rf /tmp/downloaded_packages
 
