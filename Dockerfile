@@ -8,6 +8,7 @@ RUN apt-get update && apt-get -y install -t unstable \
   libudunits2-dev \
   libsndfile1-dev \
   libfftw3-dev \
+  sysstat \
   && install2.r --error \
      -r "http://www.bioconductor.org/packages/release/bioc" \
      -r "http://cran.rstudio.com" \
@@ -51,5 +52,6 @@ RUN apt-get update && apt-get -y install -t unstable \
     cboettig/gpmanagement \
     yihui/printr \
   && r -e 'source("https://install-github.me/MangoTheCat/goodpractice")' \
-  && rm -rf /tmp/downloaded_packages
+  && rm -rf /tmp/downloaded_packages \
+  && sed -i 's/false/true/' /etc/default/sysstat
 
