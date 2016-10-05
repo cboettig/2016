@@ -12,6 +12,7 @@ RUN apt-get update && apt-get -y install -t unstable \
   && install2.r --error \
      -r "http://www.bioconductor.org/packages/release/bioc" \
      -r "http://cran.rstudio.com" \
+     -r "http://r-nimble.org" \
      FKF \
      dlm \
      KFAS \
@@ -32,9 +33,9 @@ RUN apt-get update && apt-get -y install -t unstable \
      rfishbase \
      seewave \
      pmc \
+     nimble \
   && installGithub.r \
     hadley/xml2 \
-    nimble-dev/nimble/packages/nimble@stable \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
     richfitz/drat.builder \
