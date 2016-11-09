@@ -1,0 +1,44 @@
+---
+layout: post
+
+---
+
+```{r}
+library("pomp")
+library("ggplot2")
+```
+
+## Ricker model: deterministic skeleton
+
+```{r}
+ricker.skel <- function (x, t, params, ...) {
+  r <- params["r"]
+  N <- x["N"]
+  unname(r*N*exp(-N))
+}
+```
+
+
+```{r}
+T <- 100
+data <- data.frame(time = 1:T, x = rep(0, T))
+
+po <- pomp(data, times = names(data)[[1]], t0 = 0, skeleton=ricker.skel,skeleton.type='map')
+
+output <- trajectory(po, params = c(r = 12, N.0 = 1), as.data.frame = TRUE)
+
+ggplot(output, aes(time, N)) + geom_line()
+
+```
+
+A stochastic process
+
+```{r}
+ricker.sim <- function (x, t, params, ...) {
+  e <- rnorm(n=1,mean=0,sd=params["sigma"]) 
+  c(N=unname(exp(log(params["r"])+log(x["N"])-x["N"]+e)))
+  }
+
+po <- pomp(po,rprocess=discrete.time.sim(step.fun=ricker.sim,delta.t=1))
+```
+
