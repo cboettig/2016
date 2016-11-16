@@ -7,7 +7,7 @@ RUN apt-get update && apt-get -y install \
   libudunits2-dev \
   libsndfile1-dev \
   libfftw3-dev \
-  && install.r FKF MDPtoolbox sde FastGP seewave nimble \
-  && Rscript -e "devtools::install_github(c('cloudyr/aws.signature', 'cloudyr/aws.s3', 'ropensci/EML', 'rstudio/rticles', 'cboettig/appl', 'yihui/printr'))" \
+  && install2.r --error FKF MDPtoolbox sde FastGP seewave nimble remotes \
+  && Rscript -e "remotes::install_github(c('cloudyr/aws.signature', 'cloudyr/aws.s3', 'ropensci/EML', 'rstudio/rticles', 'cboettig/appl', 'yihui/printr'))" \
   && Rscript -e 'source("https://install-github.me/MangoTheCat/goodpractice")' 
 
