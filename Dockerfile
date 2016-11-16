@@ -2,8 +2,7 @@ FROM cboettig/labnotebook
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
 ## Install additional R package dependencies ###
-RUN apt-get update && apt-get -y install -t unstable \
-  r-cran-rjags \
+RUN apt-get update && apt-get -y install \
   librsvg2-dev \
   libudunits2-dev \
   libsndfile1-dev \
@@ -34,7 +33,7 @@ RUN apt-get update && apt-get -y install -t unstable \
      seewave \
      pmc \
      nimble \
-  && installGithub.r \
+  && /usr/local/lib/R/site-library/littler/examples/installGithub.r \
     hadley/xml2 \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
