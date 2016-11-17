@@ -1,8 +1,11 @@
 FROM cboettig/labnotebook 
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
+
+
 ## Install additional R package dependencies ###
 RUN apt-get update && apt-get -y install \
+  jags/testing \
   librsvg2-dev \
   libudunits2-dev \
   libsndfile1-dev \
