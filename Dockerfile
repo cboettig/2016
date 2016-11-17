@@ -4,8 +4,9 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 
 ## Install additional R package dependencies ###
-RUN apt-get update && apt-get -y install \
-  jags/testing \
+RUN apt-get update \
+  && apt-get install -y -t testing --no-install-recommends jags \
+  && apt-get install -y --no-install-recommends \
   librsvg2-dev \
   libudunits2-dev \
   libsndfile1-dev \
@@ -36,7 +37,7 @@ RUN apt-get update && apt-get -y install \
      seewave \
      pmc \
      nimble \
-  && /usr/local/lib/R/site-library/littler/examples/installGithub.r \
+  && installGithub.r \
     hadley/xml2 \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
