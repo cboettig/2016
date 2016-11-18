@@ -1,11 +1,9 @@
 FROM cboettig/labnotebook 
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
-
-
 ## Install additional R package dependencies ###
 RUN apt-get update \
-  && apt-get install -y -t testing --no-install-recommends jags \
+  && apt-get install -y -t testing --no-install-recommends jags build-essential gfortran \
   && apt-get install -y --no-install-recommends \
   librsvg2-dev \
   libudunits2-dev \
@@ -16,6 +14,7 @@ RUN apt-get update \
      -r "http://www.bioconductor.org/packages/release/bioc" \
      -r "http://cran.rstudio.com" \
      -r "http://r-nimble.org" \
+     rjags \
      FKF \
      dlm \
      KFAS \
