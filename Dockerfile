@@ -13,7 +13,7 @@ RUN apt-get update \
   && tar -xf jags.tar.gz \
   && cd JAGS* \
   && ./configure && make && make install \
-  && cd / ** rm -rf jags.tar.gz JAGS* \
+  && cd / && rm -rf jags.tar.gz JAGS* \
 && install2.r --error \
      -r "http://www.bioconductor.org/packages/release/bioc" \
      -r "http://cran.rstudio.com" \
