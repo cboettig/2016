@@ -3,14 +3,18 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 ## Install additional R package dependencies ###
 RUN apt-get update \
-  && apt-get install -y -t testing --no-install-recommends jags build-essential gfortran \
   && apt-get install -y --no-install-recommends \
-  librsvg2-dev \
-  libudunits2-dev \
-  libsndfile1-dev \
-  libfftw3-dev \
-  sysstat \
-  && install2.r --error \
+    liblapack-dev \
+    librsvg2-dev \
+    libudunits2-dev \
+    libsndfile1-dev \
+    libfftw3-dev \
+  && wget https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/Source/JAGS-4.2.0.tar.gz -O jags.tar.gz \
+  && tar -xf jags.tar.gz \
+  && cd JAGS* \
+  && ./configure && make && make install \
+  && cd / ** rm -rf jags.tar.gz JAGS* \
+&& install2.r --error \
      -r "http://www.bioconductor.org/packages/release/bioc" \
      -r "http://cran.rstudio.com" \
      -r "http://r-nimble.org" \
@@ -36,6 +40,7 @@ RUN apt-get update \
      seewave \
      pmc \
      nimble \
+  && . /etc/environment && echo "options(repos='$MRAN')" > .Rprofile \
   && installGithub.r \
     hadley/xml2 \
     cloudyr/aws.signature \
@@ -54,7 +59,7 @@ RUN apt-get update \
     cboettig/nonparametric-bayes \
     cboettig/gpmanagement \
     yihui/printr \
+  && rm .Rprofile \
   && r -e 'source("https://install-github.me/MangoTheCat/goodpractice")' \
-  && rm -rf /tmp/downloaded_packages \
-  && sed -i 's/false/true/' /etc/default/sysstat
+  && rm -rf /tmp/downloaded_packages
 
