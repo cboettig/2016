@@ -1,4 +1,4 @@
-FROM rocker/verse
+FROM rocker/verse:3.3.2
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
 ## Install additional R package dependencies ###
