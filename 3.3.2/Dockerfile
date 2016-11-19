@@ -1,4 +1,4 @@
-FROM rocker/verse:3.3.2 
+FROM rocker/verse
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
 ## Install additional R package dependencies ###
@@ -23,9 +23,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     seewave \
     nimble \
     remotes \
-    rjags 
-
-RUN wget https://raw.githubusercontent.com/cboettig/littler/master/inst/examples/installGithub.r -O /usr/local/bin/installGithub.r \
+    rjags \
+  && wget https://raw.githubusercontent.com/cboettig/littler/master/inst/examples/installGithub.r -O /usr/local/bin/installGithub.r \
   && chmod +x /usr/local/bin/installGithub.r \
   && . /etc/environment && echo "options(repos='$MRAN')" > .Rprofile \
   && installGithub.r -u FALSE \
@@ -39,9 +38,9 @@ RUN wget https://raw.githubusercontent.com/cboettig/littler/master/inst/examples
     cboettig/mdplearning \
     yihui/printr \
   && rm .Rprofile \
-## Save me from configuring this each time
+# Save me from configuring this each time
   && git config --system user.name 'Carl Boettiger' \
   && git config --system user.email 'cboettig@gmail.com' \
   && git config --system credential.helper 'cache --timeout=3600' \
-  && git config --system push.default simple \
+  && git config --system push.default simple
 
