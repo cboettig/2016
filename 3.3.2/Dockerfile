@@ -1,4 +1,4 @@
-FROM rocker/verse:3.3.2 
+FROM rocker/verse
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
 ## Install additional R package dependencies ###
@@ -8,6 +8,9 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
   libudunits2-dev \
   libsndfile1-dev \
   libfftw3-dev \
+  libv8-3.14-dev \
+  jekyll \
+  ruby-rouge \
 ## install jags from source, jessie version too old 
   && wget https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/Source/JAGS-4.2.0.tar.gz -O jags.tar.gz \
   && tar -xf jags.tar.gz \
@@ -25,7 +28,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     remotes \
     rjags 
 
-RUN wget https://raw.githubusercontent.com/cboettig/littler/master/inst/examples/installGithub.r -O /usr/local/bin/installGithub.r \
+RUN wget https://raw.githubusercontent.com/eddelbuettel/littler/master/inst/examples/installGithub.r -O /usr/local/bin/installGithub.r \
   && chmod +x /usr/local/bin/installGithub.r \
   && . /etc/environment && echo "options(repos='$MRAN')" > .Rprofile \
   && installGithub.r -u FALSE \
