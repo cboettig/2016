@@ -9,6 +9,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
   libsndfile1-dev \
   libfftw3-dev \
   libv8-3.14-dev \
+  libxslt-dev \
   jekyll \
   ruby-rouge \
 ## install jags from source, jessie version too old 
