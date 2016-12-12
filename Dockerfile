@@ -35,7 +35,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
   && wget https://raw.githubusercontent.com/eddelbuettel/littler/master/inst/examples/installGithub.r -O /usr/local/bin/installGithub.r \
   && chmod +x /usr/local/bin/installGithub.r \
   && . /etc/environment && echo "options(repos='$MRAN')" > .Rprofile \
-  ## --update FALSE means missing dependencies won't be installed either
+  ## --update FALSE means missing dependencies fail to install (with warning only)
   && installGithub.r --update FALSE \
     hadley/xml2 \
     cloudyr/aws.signature \
@@ -48,6 +48,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     yihui/printr \
     hadley/pkgdown \
   && rm .Rprofile \
+  && chown -R root:staff /usr/local/lib/R/site-library \
 # Save me from configuring this each time
   && git config --system user.name 'Carl Boettiger' \
   && git config --system user.email 'cboettig@gmail.com' \
