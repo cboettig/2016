@@ -30,6 +30,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     remotes \
     rjags \
     XML \
+    highlight \
+    magick \
   && wget https://raw.githubusercontent.com/eddelbuettel/littler/master/inst/examples/installGithub.r -O /usr/local/bin/installGithub.r \
   && chmod +x /usr/local/bin/installGithub.r \
   && . /etc/environment && echo "options(repos='$MRAN')" > .Rprofile \
