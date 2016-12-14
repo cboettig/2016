@@ -1,8 +1,9 @@
-FROM rocker/verse
+FROM rocker/verse:latest
 MAINTAINER Carl Boettiger cboettig@ropensci.org 
 
 ## Install additional R package dependencies ###
 RUN apt-get update && apt-get -y install --no-install-recommends \
+  libopenblas-dev \
   liblapack-dev \
   librsvg2-dev \
   libudunits2-dev \
@@ -54,4 +55,5 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
   && git config --system user.email 'cboettig@gmail.com' \
   && git config --system credential.helper 'cache --timeout=3600' \
   && git config --system push.default simple
+
 
