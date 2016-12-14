@@ -20,6 +20,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 ## Install R packages from fixed repo
   && . /etc/environment \
   && install2.r --error -r $MRAN \
+    drat \
     FKF \
     MDPtoolbox \
     sde \
@@ -27,11 +28,15 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     seewave \
     nimble \
     remotes \
-    rjags \ 
+    rjags \
+    XML \
+    highlight \
+    magick \
   && wget https://raw.githubusercontent.com/eddelbuettel/littler/master/inst/examples/installGithub.r -O /usr/local/bin/installGithub.r \
   && chmod +x /usr/local/bin/installGithub.r \
   && . /etc/environment && echo "options(repos='$MRAN')" > .Rprofile \
-  && installGithub.r -u FALSE \
+  ## --update FALSE means missing dependencies fail to install (with warning only)
+  && installGithub.r --update FALSE \
     hadley/xml2 \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
@@ -41,7 +46,9 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     cboettig/appl \
     cboettig/mdplearning \
     yihui/printr \
+    hadley/pkgdown \
   && rm .Rprofile \
+  && chown -R root:staff /usr/local/lib/R/site-library \
 # Save me from configuring this each time
   && git config --system user.name 'Carl Boettiger' \
   && git config --system user.email 'cboettig@gmail.com' \
