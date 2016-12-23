@@ -22,6 +22,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
   && . /etc/environment \
   && install2.r --error -r $MRAN \
     drat \
+    EML \
     FKF \
     MDPtoolbox \
     sde \
@@ -42,7 +43,6 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
     richfitz/drat.builder \
-    ropensci/EML \
     rstudio/rticles \
     cboettig/appl \
     cboettig/mdplearning \

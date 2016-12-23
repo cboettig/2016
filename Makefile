@@ -1,11 +1,15 @@
 sync: 
-	make 3.3.2/Dockerfile 3.3.1/Dockerfile
+	make 3.3.2/Dockerfile 
+	# make 3.3.1/Dockerfile
 
 3.3.2/Dockerfile: Dockerfile
 	export R_VERSION=3.3.2 && make update
 
-3.3.1/Dockerfile: Dockerfile
-	export R_VERSION=3.3.1 && make update
+# don't sync 3.3.1 version, leave static.  This allows us to migrate
+# packages from github install to cran install in 3.3.2 that are not
+# released to cran for 3.3.1
+#3.3.1/Dockerfile: Dockerfile
+#	export R_VERSION=3.3.1 && make update
 
 update:
 	cp Dockerfile ${R_VERSION}/Dockerfile
